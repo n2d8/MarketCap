@@ -1,0 +1,3 @@
+//Coin Listings related
+export const GET_LISTINGS_SUCCESS = 'GET_LISTINGS_SUCCESS';
+export const GET_LISTINGS_FAILED = 'GET_LISTINGS_FAILED';
