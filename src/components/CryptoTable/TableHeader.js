@@ -6,7 +6,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 
 const header = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Name' },
+  { id: 'name', numeric: false, disablePadding: false, label: 'Name' },
   { id: 'cap', numeric: true, disablePadding: false, label: 'Market Cap' },
   { id: 'price', numeric: true, disablePadding: false, label: 'Price' },
   { id: 'supply', numeric: true, disablePadding: false, label: 'Circulating Supply' },

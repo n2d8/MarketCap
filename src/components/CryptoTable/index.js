@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TableHeader from './TableHeader';
 import TableToolbar from './TableToolbar';
+import Divider from '@material-ui/core/Divider';
 
 function compare(a, b, orderBy) {
   if (retrieveFieldValue(a, orderBy) > retrieveFieldValue(b, orderBy)) {
@@ -63,20 +64,20 @@ const useToolbarStyles = makeStyles(theme => ({
     theme.palette.type === 'light'
       ? {
           color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
+          backgroundColor: lighten(theme.palette.secondary.light, 0.85)
         }
       : {
           color: theme.palette.text.primary,
           backgroundColor: theme.palette.secondary.dark,
         },
   spacer: {
-    flex: '1 1 100%',
+    flex: '1 1 100%'
   },
   actions: {
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.secondary
   },
   title: {
-    flex: '0 0 auto',
+    flex: '0 0 auto'
   },
 }));
 
@@ -88,15 +89,13 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     width: '100%',
-    marginBottom: theme.spacing(2),
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2)
+    marginBottom: theme.spacing(2)
   },
   table: {
     minWidth: 750,
   },
   tableWrapper: {
-    overflowX: 'auto',
+    overflowX: 'auto'
   },
   visuallyHidden: {
     border: 0,
@@ -107,7 +106,7 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
     position: 'absolute',
     top: 20,
-    width: 1,
+    width: 1
   },
 }));
 
@@ -130,6 +129,7 @@ changeRowsPerPage, changeListingOrder, goToPage }) => {
       <Paper className={classes.paper}>
         <TableToolbar
           classes={useToolbarStyles()} />
+        <Divider />
         <div className={classes.tableWrapper}>
           <Table
             className={classes.table}
@@ -149,12 +149,12 @@ changeRowsPerPage, changeListingOrder, goToPage }) => {
                   return (
                     <TableRow
                       hover
-                      onClick={() => {goToPage('/currency/' + row.id)}}
+                      onClick={() => {goToPage('/currency/' + row.id, row, classes)}}
                       role="checkbox"
                       tabIndex={-1}
                       key={row.name}
                     >
-                      <TableCell component="th" id={row.name} scope="row" padding="none">
+                      <TableCell component="th" id={row.name} scope="row" >
                         {row.name}
                       </TableCell>
                       <TableCell align="right">${toDecimalPlace(row.quote.USD.market_cap, 0).toLocaleString()}</TableCell>
