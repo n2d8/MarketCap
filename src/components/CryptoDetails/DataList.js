@@ -2,25 +2,39 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import DataTable from './DataTable';
+import LinkTable from './LinkTable';
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: '90%',
     margin: 'auto',
-    marginTop: theme.spacing(3)
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3)
   },
+  body: {
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2)
+  }
 }));
 
-const DataList = ({ data, general, statistics, externalSource }) => {
+const DataList = ({ data, cryptoData, general, statistics, externalSource }) => {
+  console.log(externalSource);
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Typography variant="h2" id="aboutTitle">
-        {data.name}
+      <Typography variant="h3" id="aboutTitle">
+        {data.name + '(' + cryptoData.symbol + ')'}
       </Typography>
-      <p>
-        {general.desc}
-      </p>
+      <Typography className={classes.body} variant="body1">
+        {cryptoData.description}
+      </Typography>
+      <DataTable
+        data={statistics}
+        subtitle={data.name + ' Statistics'} />
+      <LinkTable
+        data={externalSource}
+        subtitle="Extra Links" />
     </div>
   );
 }

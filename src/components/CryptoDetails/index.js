@@ -12,7 +12,6 @@ class CryptoDetails extends Component {
     };
     if(Object.keys(this.state.cryptocurrency).length === 0) {
       this.props.dispatch(CryptocurrenyInfo.getCryptocurrency(this.props.match.params.id)).then(() => {
-
         this.setState({
           cryptocurrency: this.props.cryptocurrency
         });
@@ -27,6 +26,7 @@ class CryptoDetails extends Component {
       <div>
         <DataList
           data={this.props.location.state.currency}
+          cryptoData={this.state.cryptocurrency || {}}
           general={this.getGeneralData()}
           statistics={this.getStatisticsData()}
           externalSource={this.getExternalSources()} />
@@ -62,19 +62,19 @@ class CryptoDetails extends Component {
       },
       {
         label: '1 hour Percent Change',
-        value: toDecimalPlace(stats.quote.USD.percent_change_1h, 2)
+        value: stats.quote.USD.percent_change_1h + '%'
       },
       {
         label: '24 hours Percent Change',
-        value: toDecimalPlace(stats.quote.USD.percent_change_24h, 2)
+        value: stats.quote.USD.percent_change_24h + '%'
       },
       {
         label: '7 days Percent Change',
-        value: toDecimalPlace(stats.quote.USD.percent_change_7d, 2)
+        value: stats.quote.USD.percent_change_7d + '%'
       },
       {
         label: 'Date Added',
-        value: stats.date_added
+        value: stats.date_added.substring(0, 10)
       }
     ];
   }
@@ -96,7 +96,12 @@ class CryptoDetails extends Component {
     ];
   }
   getExternalSources() {
-    return [];
+    let websites = [];
+    if(Object.keys(this.state.cryptocurrency).length > 0) {
+      Object.keys(this.state.cryptocurrency.urls).map(key => websites = websites.concat(this.state.cryptocurrency.urls[key]));
+      console.log('ksaljcnksjdncaklsjds', websites);
+    }
+    return websites;
   }
 }
 
