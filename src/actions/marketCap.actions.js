@@ -1,5 +1,5 @@
 import * as ActionTypes from './actionTypes';
-import * as MarketCapApi from '../api/marketCap.api';
+import * as MarketCapApi from '../api/coinMarketCap.api';
 
 function getListingsSuccess(listings) {
   return {
