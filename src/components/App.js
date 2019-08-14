@@ -14,6 +14,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      order: 'asc',
+      orderBy: 'cap',
+      page: 0,
+      rowsPerPage: 5,
       listings: this.props.listings || []
     };
     if(this.props.listings.length <= 0) {
@@ -23,15 +27,45 @@ class App extends Component {
         });
       });
     }
+    this.changeOrder = this.changeOrder.bind(this);
+    this.changePageNumber = this.changePageNumber.bind(this);
+    this.changeRowsPerPage = this.changeRowsPerPage.bind(this);
   }
   render() {
     return(
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <CryptoTable
-          listing={this.state.listings || []}/>
+          order={this.state.order}
+          orderBy={this.state.orderBy}
+          page={this.state.page}
+          rowsPerPage={this.state.rowsPerPage}
+          listings={this.state.listings || []}
+          changeOrder={this.changeOrder}
+          changePageNumber={this.changePageNumber}
+          changeRowsPerPage={this.changeRowsPerPage} />
       </MuiThemeProvider>
     );
+  }
+  changeOrder(orderBy) {
+    let order = 'asc';
+    if(order === this.state.order) {
+      order = 'desc';
+    }
+    this.setState({
+      order: order,
+      orderBy: orderBy
+    });
+  }
+  changePageNumber(event, page) {
+    this.setState({
+      page: page
+    });
+  }
+  changeRowsPerPage(event) {
+    this.setState({
+      rowsPerPage: event.target.value
+    });
   }
 }
 
