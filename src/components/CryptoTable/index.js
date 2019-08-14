@@ -115,10 +115,6 @@ function handleRowClick(event, row) {
   console.log('in handleSortRequest', event, row);
 }
 
-function toCommaSepartedInt(number) {
-
-}
-
 function toDecimalPlace(num, places) {
   return +(Math.round(num + "e+" + places)  + "e-" + places);
 }
@@ -159,10 +155,10 @@ changeRowsPerPage, changeListingOrder }) => {
                       <TableCell component="th" id={row.name} scope="row" padding="none">
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">${toDecimalPlace(row.quote.USD.market_cap, 0)}</TableCell>
-                      <TableCell align="right">${toDecimalPlace(row.quote.USD.price, 2)}</TableCell>
-                      <TableCell align="right">{toDecimalPlace(row.circulating_supply, 0) + ' ' + row.symbol}</TableCell>
-                      <TableCell align="right">${toDecimalPlace(row.quote.USD.volume_24h, 0)}</TableCell>
+                      <TableCell align="right">${toDecimalPlace(row.quote.USD.market_cap, 0).toLocaleString()}</TableCell>
+                      <TableCell align="right">${toDecimalPlace(row.quote.USD.price, 2).toLocaleString()}</TableCell>
+                      <TableCell align="right">{toDecimalPlace(row.circulating_supply, 0).toLocaleString() + ' ' + row.symbol}</TableCell>
+                      <TableCell align="right">${toDecimalPlace(row.quote.USD.volume_24h, 0).toLocaleString()}</TableCell>
                       <TableCell align="right">{toDecimalPlace(row.quote.USD.percent_change_24h, 2)}%</TableCell>
                     </TableRow>
                   );
