@@ -1,7 +1,7 @@
 export function getMarketCapListing() {
   const options = {
     headers: {
-      'X-CMC_PRO_API_KEY': process.env.COIN_MARKET_CAP_API_KEY
+      'X-CMC_PRO_API_KEY': '8ea7e2f7-dae8-4834-9162-6a0787662aa6'
     }
   };
   return new Promise((resolve, reject) => {
