@@ -1,0 +1,8 @@
+{
+  "root": "build/",
+  "proxies": {
+    "/latest/": {
+      "origin": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/"
+    }
+  }
+}
