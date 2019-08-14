@@ -8,7 +8,7 @@ const CryptoToolbar = ({classes}) => {
     <Toolbar>
       <div className={classes.title}>
         <Typography variant="h6" id="tableTitle">
-          Cryptocurrency Market Cap Overview
+          All Cryptocurrencies
         </Typography>
       </div>
       <div className={classes.spacer} />
