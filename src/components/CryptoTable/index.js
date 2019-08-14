@@ -10,50 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import TableHeader from './TableHeader';
 import TableToolbar from './TableToolbar';
 import Divider from '@material-ui/core/Divider';
-
-function compare(a, b, orderBy) {
-  if (retrieveFieldValue(a, orderBy) > retrieveFieldValue(b, orderBy)) {
-    return 1;
-  }
-  if (retrieveFieldValue(a, orderBy) < retrieveFieldValue(b, orderBy)) {
-    return -1;
-  }
-  return 0;
-}
-
-
-function retrieveFieldValue(element, orderBy) {
-  switch(orderBy) {
-    case 'cap':
-      return element.quote.USD.market_cap;
-    case 'price':
-      return element.quote.USD.price;
-    case 'supply':
-      return element.circulating_supply;
-    case 'volume':
-      return element.quote.USD.volume_24h;
-    case 'change':
-      return element.quote.USD.percent_change_24h;
-    default:
-      return element.name;
-  }
-}
-
-function sortListings(array, order, orderBy) {
-  const stablizeListing = array.map((element, index) => [element, index] );
-  const stablizeCompare = (a, b) => {
-    let compareValue = compare(a[0], b[0], orderBy);
-    if(order === 'desc') {
-      compareValue *= -1;
-    }
-    if(order !== 0) {
-      return compareValue;
-    }
-    return a[1] - b[1];
-  }
-  stablizeListing.sort(stablizeCompare);
-  return stablizeListing.map((element) => element[0]);
-}
+import { toDecimalPlace, sortListings } from '../helper/helper';
 
 const useToolbarStyles = makeStyles(theme => ({
   root: {
@@ -110,16 +67,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function toDecimalPlace(num, places) {
-  if(Math.abs(num) > 0.01) {
-    return +(Math.round(num + 'e+' + places)  + 'e-' + places);
-  }
-  if(num === null) {
-    return '?';
-  }
-  return num;
-}
-
 const CryptoTable = ({ order, orderBy, page, rowsPerPage, listings, changeOrder, changePageNumber,
 changeRowsPerPage, changeListingOrder, goToPage }) => {
   const emptyRows = rowsPerPage - (listings.length - page * rowsPerPage);
@@ -149,7 +96,7 @@ changeRowsPerPage, changeListingOrder, goToPage }) => {
                   return (
                     <TableRow
                       hover
-                      onClick={() => {goToPage('/currency/' + row.id, row, classes)}}
+                      onClick={() => {goToPage('/currency/' + row.id, row)}}
                       role="checkbox"
                       tabIndex={-1}
                       key={row.name}
