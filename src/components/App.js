@@ -14,10 +14,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      order: 'asc',
+      order: 'desc',
       orderBy: 'cap',
       page: 0,
-      rowsPerPage: 5,
+      rowsPerPage: 10,
       listings: this.props.listings || []
     };
     if(this.props.listings.length <= 0) {
@@ -26,10 +26,11 @@ class App extends Component {
           listings: this.props.listings
         });
       });
-    }
+    };
     this.changeOrder = this.changeOrder.bind(this);
     this.changePageNumber = this.changePageNumber.bind(this);
     this.changeRowsPerPage = this.changeRowsPerPage.bind(this);
+    this.goToPage = this.goToPage.bind(this);
   }
   render() {
     return(
@@ -43,7 +44,8 @@ class App extends Component {
           listings={this.state.listings || []}
           changeOrder={this.changeOrder}
           changePageNumber={this.changePageNumber}
-          changeRowsPerPage={this.changeRowsPerPage} />
+          changeRowsPerPage={this.changeRowsPerPage}
+          goToPage={this.goToPage} />
       </MuiThemeProvider>
     );
   }
@@ -66,6 +68,9 @@ class App extends Component {
     this.setState({
       rowsPerPage: event.target.value
     });
+  }
+  goToPage(route) {
+    this.props.history.push(route);
   }
 }
 

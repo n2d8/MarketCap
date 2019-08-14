@@ -111,10 +111,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function handleRowClick(event, row) {
-  console.log('in handleSortRequest', event, row);
-}
-
 function toDecimalPlace(num, places) {
   if(Math.abs(num) > 0.01) {
     return +(Math.round(num + 'e+' + places)  + 'e-' + places);
@@ -126,7 +122,7 @@ function toDecimalPlace(num, places) {
 }
 
 const CryptoTable = ({ order, orderBy, page, rowsPerPage, listings, changeOrder, changePageNumber,
-changeRowsPerPage, changeListingOrder }) => {
+changeRowsPerPage, changeListingOrder, goToPage }) => {
   const emptyRows = rowsPerPage - (listings.length - page * rowsPerPage);
   const classes = useStyles();
   return (
@@ -153,7 +149,7 @@ changeRowsPerPage, changeListingOrder }) => {
                   return (
                     <TableRow
                       hover
-                      onClick={handleRowClick}
+                      onClick={() => {goToPage('/currency/' + row.id)}}
                       role="checkbox"
                       tabIndex={-1}
                       key={row.name}
