@@ -69,8 +69,8 @@ class App extends Component {
       rowsPerPage: event.target.value
     });
   }
-  goToPage(route) {
-    this.props.history.push(route);
+  goToPage(route, currencyInfo) {
+    this.props.history.push(route, { currency: currencyInfo });
   }
 }
 
