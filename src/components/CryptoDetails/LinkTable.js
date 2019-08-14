@@ -7,6 +7,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const DataTable = ({data, subtitle}) => {
+const LinkTable = ({data, subtitle}) => {
   const classes = useStyles();
   console.log(data);
   return (
@@ -45,4 +46,9 @@ const DataTable = ({data, subtitle}) => {
   );
 }
 
-export default DataTable;
+LinkTable.propTypes = {
+  data: PropTypes.array.isRequired,
+  subtitle: PropTypes.string.isRequired
+};
+
+export default LinkTable;

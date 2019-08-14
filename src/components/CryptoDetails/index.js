@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DataList from './DataList';
 import { connect } from 'react-redux';
-import { formatMoney, toDecimalPlace } from '../helper/helper';
+import { formatMoney } from '../helper/helper';
 import * as CryptocurrenyInfo from '../../actions/cryptocurrencyInfo.action';
 
 class CryptoDetails extends Component {
@@ -23,7 +23,7 @@ class CryptoDetails extends Component {
   }
   render() {
     return(
-      <div>
+      <div style={{paddingBottom: '40%'}}>
         <DataList
           data={this.props.location.state.currency}
           cryptoData={this.state.cryptocurrency || {}}

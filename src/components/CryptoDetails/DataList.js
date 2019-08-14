@@ -40,6 +40,11 @@ const DataList = ({ data, cryptoData, general, statistics, externalSource }) => 
 }
 
 DataList.propTypes = {
+  data: PropTypes.object.isRequired,
+  cryptoData: PropTypes.object,
+  general: PropTypes.array.isRequired,
+  statistics: PropTypes.array.isRequired,
+  externalSource: PropTypes.array.isRequired
 };
 
 export default DataList;
