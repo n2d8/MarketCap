@@ -18,7 +18,7 @@ class App extends Component {
       orderBy: 'cap',
       page: 0,
       rowsPerPage: 10,
-      listings: []
+      listings: this.props.listings || []
     };
     if(this.props.listings.length === 0) {
       this.props.dispatch(MarketCapActions.getCoinListing()).then(() => {
