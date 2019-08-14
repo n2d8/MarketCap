@@ -11,7 +11,7 @@ export function getMarketCapListing() {
         console.log('API call respond but not ok', res);
         reject(res);
       }
-      console.log('API call not ok', res);
+      console.log('API call ok', res);
       resolve(res.json());
     }).catch(err => {
       console.log('API call not ok', err);
