@@ -18,9 +18,9 @@ class App extends Component {
       orderBy: 'cap',
       page: 0,
       rowsPerPage: 10,
-      listings: this.props.listings || []
+      listings: []
     };
-    if(this.props.listings.length <= 0) {
+    if(this.props.listings.length === 0) {
       this.props.dispatch(MarketCapActions.getCoinListing()).then(() => {
         this.setState({
           listings: this.props.listings

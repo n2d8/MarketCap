@@ -9,7 +9,6 @@ export function toDecimalPlace(num, places) {
 }
 
 export function formatMoney(num, dp) {
-  console.log(num, dp, toDecimalPlace(num, dp))
   return '$' + toDecimalPlace(num, dp).toLocaleString() + ' USD';
 }
 
