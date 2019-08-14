@@ -6,11 +6,15 @@ export function getMarketCapListing() {
   };
   return new Promise((resolve, reject) => {
     fetch('/listings/latest?start=1&limit=5000&convert=USD', options).then(res => {
+      console.log('the provided api key', process.env.COIN_MARKET_CAP_API_KEY);
       if(!res.ok) {
+        console.log('API call respond but not ok', res);
         reject(res);
       }
+      console.log('API call not ok', res);
       resolve(res.json());
     }).catch(err => {
+      console.log('API call not ok', err);
       reject(err.message);
     });
   });
