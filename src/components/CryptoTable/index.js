@@ -116,7 +116,13 @@ function handleRowClick(event, row) {
 }
 
 function toDecimalPlace(num, places) {
-  return +(Math.round(num + "e+" + places)  + "e-" + places);
+  if(Math.abs(num) > 0.01) {
+    return +(Math.round(num + 'e+' + places)  + 'e-' + places);
+  }
+  if(num === null) {
+    return '?';
+  }
+  return num;
 }
 
 const CryptoTable = ({ order, orderBy, page, rowsPerPage, listings, changeOrder, changePageNumber,
