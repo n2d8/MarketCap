@@ -18,7 +18,6 @@ class CryptoDetails extends Component {
       });
     };
     this.getStatisticsData = this.getStatisticsData.bind(this);
-    this.getGeneralData = this.getGeneralData.bind(this);
     this.getExternalSources = this.getExternalSources.bind(this);
   }
   render() {
@@ -27,7 +26,6 @@ class CryptoDetails extends Component {
         <DataList
           data={this.props.location.state.currency}
           cryptoData={this.state.cryptocurrency || {}}
-          general={this.getGeneralData()}
           statistics={this.getStatisticsData()}
           externalSource={this.getExternalSources()} />
       </div>
@@ -35,7 +33,16 @@ class CryptoDetails extends Component {
   }
   getStatisticsData() {
     const stats = this.props.location.state.currency;
+    console.log(stats);
     return [
+      {
+        label: 'Market Rank',
+        value: stats.cmc_rank
+      },
+      {
+        label: 'Category',
+        value: this.props.cryptocurrency.category
+      },
       {
         label: 'Price',
         value: formatMoney(stats.quote.USD.price, 0)
@@ -46,15 +53,15 @@ class CryptoDetails extends Component {
       },
       {
         label: 'Curculating Supply',
-        value: stats.circulating_supply + ' ' + stats.symbol
+        value: stats.circulating_supply === null ? 'Unknown' : stats.circulating_supply + ' ' + stats.symbol
       },
       {
         label: 'Total Supply',
-        value: stats.total_supply + ' ' + stats.symbol
+        value: stats.total_supply === null ? 'Unknown' : stats.total_supply + ' ' + stats.symbol
       },
       {
         label: 'Max Supply',
-        value: stats.max_supply + ' ' + stats.symbol
+        value: stats.max_supply === null ? 'Unknown' : stats.max_supply + ' ' + stats.symbol
       },
       {
         label: '24 hours volume',
@@ -62,44 +69,36 @@ class CryptoDetails extends Component {
       },
       {
         label: '1 hour Percent Change',
-        value: stats.quote.USD.percent_change_1h + '%'
+        value: stats.quote.USD.percent_change_1h === null?
+                'Insufficient data' :
+                stats.quote.USD.percent_change_1h + '%'
       },
       {
         label: '24 hours Percent Change',
-        value: stats.quote.USD.percent_change_24h + '%'
+        value: stats.quote.USD.percent_change_24h === null?
+                'Insufficient data' :
+                stats.quote.USD.percent_change_24h + '%'
       },
       {
         label: '7 days Percent Change',
-        value: stats.quote.USD.percent_change_7d + '%'
+        value: stats.quote.USD.percent_change_7d === null?
+                'Insufficient data' :
+                stats.quote.USD.percent_change_7d + '%'
       },
       {
         label: 'Date Added',
-        value: stats.date_added.substring(0, 10)
-      }
-    ];
-  }
-  getGeneralData() {
-    const stats = this.props.location.state.currency;
-    return [
-      {
-        label: 'Market Rank',
-        value: stats.cmc_rank
-      },
-      {
-        label: 'Name',
-        value: stats.name
+        value: stats.date_added === null? 'Unknown' : stats.date_added.substring(0, 10)
       },
       {
         label: 'Mineability',
-        value: stats.tags[0]
+        value: stats.tags.length !== 1? 'Unknown' :  stats.tags[0]
       }
     ];
   }
   getExternalSources() {
     let websites = [];
     if(Object.keys(this.state.cryptocurrency).length > 0) {
-      Object.keys(this.state.cryptocurrency.urls).map(key => websites = websites.concat(this.state.cryptocurrency.urls[key]));
-      console.log('ksaljcnksjdncaklsjds', websites);
+      Object.keys(this.state.cryptocurrency.urls).map(key => websites = websites.concat(this.props.cryptocurrency.urls[key]));
     }
     return websites;
   }

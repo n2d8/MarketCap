@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const DataList = ({ data, cryptoData, general, statistics, externalSource }) => {
+const DataList = ({ data, cryptoData, statistics, externalSource }) => {
   console.log(externalSource);
   const classes = useStyles();
   return (
@@ -42,7 +42,6 @@ const DataList = ({ data, cryptoData, general, statistics, externalSource }) => 
 DataList.propTypes = {
   data: PropTypes.object.isRequired,
   cryptoData: PropTypes.object,
-  general: PropTypes.array.isRequired,
   statistics: PropTypes.array.isRequired,
   externalSource: PropTypes.array.isRequired
 };

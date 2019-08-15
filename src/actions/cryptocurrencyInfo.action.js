@@ -1,10 +1,11 @@
 import * as ActionTypes from './actionTypes';
 import * as MarketCapApi from '../api/coinMarketCap.api';
 
-function getCryptocurrencySuccess(cryptocurrencyInfo) {
+function getCryptocurrencySuccess(cryptocurrencyInfo, id) {
   return {
     type: ActionTypes.GET_CRYPTOCURRENCY_SUCCESS,
-    cryptocurrencyInfo
+    cryptocurrencyInfo,
+    id
   };
 }
 
@@ -18,7 +19,7 @@ function getCryptocurrencyFailed(error) {
 export function getCryptocurrency(id) {
   return (dispatch) => {
     return MarketCapApi.getCryptocurrencyInfo(id).then(data => {
-      dispatch(getCryptocurrencySuccess(data));
+      dispatch(getCryptocurrencySuccess(data, id));
     }).catch(error => {
       dispatch(getCryptocurrencyFailed(error));
     });
