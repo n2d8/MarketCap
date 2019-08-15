@@ -29,7 +29,6 @@ class CryptoDetails extends Component {
   }
   getStatisticsData() {
     const stats = this.props.location.state.currency;
-    console.log(stats);
     return [
       {
         label: 'Market Rank',
@@ -93,8 +92,9 @@ class CryptoDetails extends Component {
   }
   getExternalSources() {
     let websites = [];
-    if(Object.keys(this.props.cryptocurrency).length > 0) {
-      Object.keys(this.props.cryptocurrency.urls).map(key => websites = websites.concat(this.props.cryptocurrency.urls[key]));
+    console.log(this.props, this.state);
+    if(Object.keys(this.state.cryptocurrency).length > 0) {
+      Object.keys(this.state.cryptocurrency.urls).map(key => websites = websites.concat(this.state.cryptocurrency.urls[key]));
     }
     return websites;
   }

@@ -26,7 +26,6 @@ const useStyles = makeStyles(theme => ({
 
 const LinkTable = ({data, subtitle}) => {
   const classes = useStyles();
-  console.log(data);
   return (
     <Paper className={classes.root}>
       <Typography className={classes.title} variant="h4" id="subtitle">
