@@ -7,8 +7,15 @@ import * as CryptocurrenyInfo from '../../actions/cryptocurrencyInfo.action';
 class CryptoDetails extends Component {
   constructor(props) {
     super(props);
-    if(Object.keys(this.props.cryptocurrency).length === 0) {
-      this.props.dispatch(CryptocurrenyInfo.getCryptocurrency(this.props.match.params.id));
+    this.state = {
+      cryptocurrency: {}
+    };
+    if(Object.keys(this.state.cryptocurrency).length === 0) {
+      this.props.dispatch(CryptocurrenyInfo.getCryptocurrency(this.props.match.params.id)).then(() => {
+        this.setState({
+          cryptocurrency: this.props.cryptocurrency
+        });
+      });
     };
     this.getStatisticsData = this.getStatisticsData.bind(this);
     this.getExternalSources = this.getExternalSources.bind(this);
