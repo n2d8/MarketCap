@@ -1,5 +1,21 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Project Description
+
+The application's intention is to create a demo-ready web app asap. This project uses Create React App as the base of this application and uses React, React-redux, React-router and Material-UI to setup the base of the application. Please refer to the Development Plan in the Project section for more details.
+
+## Build Instructions
+
+Building for the development branch need to be careful as the API Key is missing for this project as it is only defined in local. For development branch, please specify an API key in files of the api folder.
+
+## Testing
+
+Mainly done manually; setting up testing mechanism such as automated testing, unit testing and component testing is on issue #19. The application is successfully built with the script "npm start" on Windows and MacOS on chrome browser.
+
+## Branch Information
+
+3 main branch - master is the production branch, development is for dev purposes and preproduction
+
 ## Available Scripts
 
 In the project directory, you can run:
