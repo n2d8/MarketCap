@@ -92,8 +92,9 @@ class CryptoDetails extends Component {
   }
   getExternalSources() {
     let websites = [];
-    if(Object.keys(this.props.cryptocurrency).length > 0) {
-      Object.keys(this.props.cryptocurrency.urls).map(key => websites = websites.concat(this.props.cryptocurrency.urls[key]));
+    if(this.props.cryptocurrency.urls && Object.keys(this.props.cryptocurrency.urls).length > 0) {
+      Object.keys(this.props.cryptocurrency.urls).map(
+        key => websites = websites.concat(this.props.cryptocurrency.urls[key]));
     }
     return websites;
   }
