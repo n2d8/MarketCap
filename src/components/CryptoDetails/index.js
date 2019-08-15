@@ -7,10 +7,7 @@ import * as CryptocurrenyInfo from '../../actions/cryptocurrencyInfo.action';
 class CryptoDetails extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      cryptocurrency: {}
-    };
-    if(Object.keys(this.state.cryptocurrency).length === 0) {
+    if(!this.props.cryptocurrency) {
       this.props.dispatch(CryptocurrenyInfo.getCryptocurrency(this.props.match.params.id));
     };
     this.getStatisticsData = this.getStatisticsData.bind(this);
@@ -21,7 +18,7 @@ class CryptoDetails extends Component {
       <div style={{paddingBottom: '40%'}}>
         <DataList
           data={this.props.location.state.currency}
-          cryptoData={this.state.cryptocurrency || {}}
+          cryptoData={this.props.cryptocurrency || {}}
           statistics={this.getStatisticsData()}
           externalSource={this.getExternalSources()} />
       </div>
