@@ -34,43 +34,43 @@ class CryptoDetails extends Component {
     return [
       {
         label: 'Price',
-        value: formatMoney(stats.quote.USD.price, 0) || '?'
+        value: formatMoney(stats.quote.USD.price, 0)
       },
       {
         label: 'Market Cap',
-        value: formatMoney(stats.quote.USD.market_cap, 0) || '?'
+        value: formatMoney(stats.quote.USD.market_cap, 0)
       },
       {
         label: 'Curculating Supply',
-        value: stats.circulating_supply + ' ' + stats.symbol || '?'
+        value: stats.circulating_supply + ' ' + stats.symbol
       },
       {
         label: 'Total Supply',
-        value: stats.total_supply + ' ' + stats.symbol || '?'
+        value: stats.total_supply + ' ' + stats.symbol
       },
       {
         label: 'Max Supply',
-        value: stats.max_supply + ' ' + stats.symbol || '?'
+        value: stats.max_supply + ' ' + stats.symbol
       },
       {
         label: '24 hours volume',
-        value: formatMoney(stats.quote.USD.volume_24h, 0) || '?'
+        value: formatMoney(stats.quote.USD.volume_24h, 0)
       },
       {
         label: '1 hour Percent Change',
-        value: stats.quote.USD.percent_change_1h + '%' || '?'
+        value: stats.quote.USD.percent_change_1h + '%'
       },
       {
         label: '24 hours Percent Change',
-        value: stats.quote.USD.percent_change_24h + '%' || '?'
+        value: stats.quote.USD.percent_change_24h + '%'
       },
       {
         label: '7 days Percent Change',
-        value: stats.quote.USD.percent_change_7d + '%' || '?'
+        value: stats.quote.USD.percent_change_7d + '%'
       },
       {
         label: 'Date Added',
-        value: stats.date_added.substring(0, 10) || '?'
+        value: stats.date_added.substring(0, 10)
       }
     ];
   }

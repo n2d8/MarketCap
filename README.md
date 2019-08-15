@@ -2,6 +2,22 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Stack
 
+## Build Instructions
+
+## API Key
+
+## UI Implementations
+
+## Application Design
+
+## Application Deployment
+
+## Version Specification
+
+## Test Results
+
+## Branch Information
+
 ## Available Scripts
 
 In the project directory, you can run:

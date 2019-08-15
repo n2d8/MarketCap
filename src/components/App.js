@@ -33,7 +33,6 @@ class App extends Component {
     this.goToPage = this.goToPage.bind(this);
   }
   render() {
-    console.log('App renders', this.props);
     return(
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
