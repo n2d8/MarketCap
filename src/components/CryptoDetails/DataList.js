@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const DataList = ({ data, cryptoData, statistics, externalSource }) => {
-  console.log(externalSource);
+  console.log(cryptoData);
   const classes = useStyles();
   return (
     <div className={classes.root}>
